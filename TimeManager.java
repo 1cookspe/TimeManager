@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 /* Name: Spencer Gable-Cook
  * Date: January 22, 2021
  * Version: v0
@@ -11,7 +13,25 @@ class TimeManager {
   private static final int NUMBER_MINUTES_DAY = 24 * 60;
 
   public static void main(String[] args) {
-    System.out.println(AddMinutes("12:33 AM", 100));
+    Scanner scanner = new Scanner(System.in);
+
+    // Test function with user inputs
+    System.out.println("Welcome to the AddMinutes Calculator! Please input the time according to the following prompts!");
+    System.out.print("Enter hours: ");
+    int hours = scanner.nextInt();
+    System.out.print("Enter minutes: ");
+    int minutes = scanner.nextInt();
+    System.out.print("AM or PM?: ");
+    String timeOfDay = scanner.next();
+    System.out.print("How many minutes would you like to add?: ");
+    int minutesToAdd = scanner.nextInt();
+
+    // Call the 'AddMinutes' function with the input
+    String timeString = Integer.toString(hours) + ":" + Integer.toString(minutes) + " " + timeOfDay;
+    String newTime = AddMinutes(timeString, minutesToAdd);
+
+    // Output results
+    System.out.println(minutesToAdd + " minutes after " + timeString + " is " + newTime);
   }
 
   public static String AddMinutes(String timeString, int numberOfMinutes) {
@@ -39,7 +59,6 @@ class TimeManager {
     if (totalMinutes >= NUMBER_MINUTES_DAY) {
       totalMinutes = totalMinutes % NUMBER_MINUTES_DAY;
     }
-    System.out.println(totalMinutes);
 
     // Now, convert the raw minutes back into a time format
     String newTimeOfDay = "AM";
