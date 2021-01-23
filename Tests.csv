@@ -1,0 +1,10 @@
+﻿Code Results,,,,Manual Calculation,,,,,,
+Time,Minutes Added,Output,,Hours,Minutes,AM/PM,Minutes Added,Result,,Correct?
+1:24 AM,10,1:34 AM,,1,24,AM,10,1:34 AM,,Yes
+11:44 PM,17,12:01 AM,,11,44,PM,17,12:01 AM,,Yes
+3:44 PM,1000,8:24 AM,,3,44,PM,1000,8:24 AM,,Yes
+12:00 AM,1439,11:59 PM,,12,0,AM,1439,11:59 PM,,Yes
+12:00 AM,1441,12:01 AM,,12,0,AM,1441,12:01 AM,,Yes
+2:08 AM,5000,1:28 PM,,2,8,AM,5000,1:28 PM,,Yes
+9:13 AM,200,12:33 PM,,9,13,AM,200,12:33 PM,,Yes
+9:13 AM,48,10:01 AM,,9,13,AM,48,10:01 AM,,Yes
