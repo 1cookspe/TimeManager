@@ -30,6 +30,7 @@ class TimeManager {
       // Call the 'AddMinutes' function with the input
       newTime = AddMinutes(timeString, minutesToAdd);
     } while (newTime.equals("")); // repeat if there is invalid input
+    scanner.close();
 
     // Output results
     System.out.println(minutesToAdd + " minutes after " + timeString + " is " + newTime);
