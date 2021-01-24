@@ -29,5 +29,26 @@ public class Test {
     assert(test13.equals("2:01 AM"));
     String test14 = TimeManager.AddMinutes("1:59 PM", 417);
     assert(test14.equals("8:56 PM"));
+    String test15 = TimeManager.AddMinutes("3:40 AM", -8);
+    assert(test15.equals("3:32 AM"));
+    String test16 = TimeManager.AddMinutes("12:01 AM", -3);
+    assert(test16.equals("11:58 PM"));
+    String test17 = TimeManager.AddMinutes("3:44 PM", -1000);
+    assert(test17.equals("11:04 PM"));
+    String test18 = TimeManager.AddMinutes("12:00 PM", -719);
+    assert(test18.equals("12:01 AM"));
+    String test19 = TimeManager.AddMinutes("1:21 PM", -5000);
+    assert(test19.equals("2:01 AM"));
+    String test20 = TimeManager.AddMinutes("1:21 PM", -5130);
+    assert(test20.equals("11:51 PM"));
+    // Invalid input
+    String test21 = TimeManager.AddMinutes("1:21PM", -5);
+    assert(test21.equals(""));
+    String test22 = TimeManager.AddMinutes("1:21", 10);
+    assert(test22.equals(""));
+    String test23 = TimeManager.AddMinutes("1:21 FM", 10);
+    assert(test23.equals(""));
+    String test24 = TimeManager.AddMinutes("time", 10);
+    assert(test24.equals(""));
   }
 }

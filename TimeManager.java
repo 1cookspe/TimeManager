@@ -20,20 +20,27 @@ class TimeManager {
     String newTime = "";
     String timeString = "";
     int minutesToAdd = 0;
+    boolean validMinutes = false;
     do {
       System.out.print("Please input the time according to the following format: \"[H]H:MM {AM|PM}\": ");
       timeString = scanner.nextLine();
       System.out.print("How many minutes would you like to add?: ");
-      minutesToAdd = scanner.nextInt();
+      // Check that minutes is valid
+      if (scanner.hasNextInt()) {
+        minutesToAdd = scanner.nextInt();
+        validMinutes = true;
+      } else {
+        System.out.println("Invalid input! Please try again!");
+      }
       scanner.nextLine();
 
       // Call the 'AddMinutes' function with the input
       newTime = AddMinutes(timeString, minutesToAdd);
-    } while (newTime.equals("")); // repeat if there is invalid input
+    } while (newTime.equals("") || !validMinutes); // repeat if there is invalid input
     scanner.close();
 
     // Output results
-    System.out.println(minutesToAdd + " minutes after " + timeString + " is " + newTime);
+    System.out.println(minutesToAdd + " minutes from " + timeString + " is " + newTime);
   }
 
   private static int getNumberFromTime(String number) {
@@ -80,9 +87,12 @@ class TimeManager {
     // Add 'numberOfMinutes' to this total
     totalMinutes += numberOfMinutes;
     // Check if 'totalMinutes' overflows the total minutes in a day.
-    // If this is the case, then it must wrap around to the next day.
+    // If this is the case, then it must wrap around to the next or previous day.
     if (totalMinutes >= NUMBER_MINUTES_DAY) {
       totalMinutes = totalMinutes % NUMBER_MINUTES_DAY;
+    } else if (totalMinutes < 0) {
+      int offsetFromEndOfDay = totalMinutes % NUMBER_MINUTES_DAY;
+      totalMinutes = NUMBER_MINUTES_DAY + offsetFromEndOfDay;
     }
 
     // Now, convert the raw minutes back into a time format
